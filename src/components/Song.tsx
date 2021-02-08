@@ -1,12 +1,21 @@
 import React from "react";
-interface Props {}
 
-const Song: React.FC<Props> = (props) => {
+type Props = {
+  name: String;
+  cover: String | string;
+  audio: String;
+  artist: String;
+  color: Array<String>;
+  id: String;
+  isActive: Boolean;
+};
+
+const Song: React.FC<Props> = ({ artist, name, cover }) => {
   return (
     <div className="song-container">
-      <h1>Picture</h1>
-      <h1>Song Name</h1>
-      <h1>Artist</h1>
+      <img src={`${cover}`} alt="song cover" />
+      <h2>{name}</h2>
+      <h3>{artist}</h3>
     </div>
   );
 };

@@ -6,11 +6,11 @@ import getSongsList from "./utils/SongList";
 
 function App() {
   const [songs, setSongs] = useState(getSongsList());
-  const [currentSong, getCurrentSong] = useState(songs[0]);
+  const [currentSong, setCurrentSong] = useState(songs[0]);
   return (
     <div className="App">
-      <Song />
-      <Player />
+      <Song {...currentSong} />
+      <Player {...currentSong} />
     </div>
   );
 }
