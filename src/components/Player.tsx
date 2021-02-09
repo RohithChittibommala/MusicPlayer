@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { FaAngleLeft, FaAngleRight, FaPlay } from "react-icons/fa";
 import { Song } from "../utils/SongList";
+import { FiPause } from "react-icons/fi";
 interface Props extends Song {}
 
 type songInfoType = {
@@ -37,20 +38,41 @@ const Player: React.FC<Props> = ({ audio }) => {
       Math.floor(time / 60) + ":" + ("0" + Math.floor(time % 60)).slice(-2)
     );
   }
-  console.log(timeFormatter(songInfo.currentTime));
+
+  function handleSongDrag(e: React.ChangeEvent<HTMLInputElement>) {
+    if (audioRef.current?.currentTime)
+      audioRef.current.currentTime = e.currentTarget.valueAsNumber;
+    setSongInfo({ ...songInfo, currentTime: e.currentTarget.valueAsNumber });
+  }
+
   return (
     <div className="player">
       <div className="time-control">
         <p>{timeFormatter(songInfo.currentTime)}</p>
-        <input type="range" />
-        <p>End Time</p>
+        <input
+          type="range"
+          value={songInfo.currentTime}
+          min={0}
+          max={songInfo.duration}
+          onChange={handleSongDrag}
+        />
+        <p>{timeFormatter(songInfo.duration)}</p>
       </div>
       <div className="play-control">
         <FaAngleLeft size={24} className="svg" />
-        <FaPlay size={30} onClick={playSongHandler} className="svg" />
+        {isPlaying ? (
+          <FiPause size={30} onClick={playSongHandler} className="svg" />
+        ) : (
+          <FaPlay size={30} onClick={playSongHandler} className="svg" />
+        )}
         <FaAngleRight size={24} className="svg" />
       </div>
-      <audio onTimeUpdate={timeUpdateHandler} ref={audioRef} src={`${audio}`} />
+      <audio
+        onTimeUpdate={timeUpdateHandler}
+        onLoadedMetadata={timeUpdateHandler}
+        ref={audioRef}
+        src={`${audio}`}
+      />
     </div>
   );
 };
