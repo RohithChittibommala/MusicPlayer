@@ -5,6 +5,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   img {
     width: 20%;
     border-radius: 50%;
@@ -12,8 +13,12 @@
   h2 {
     padding: 1rem;
     padding-top: 3rem;
+    font-family: "Fredoka One", cursive;
+    font-weight: 600;
   }
   h3 {
     font-size: 1rem;
+    color: rgb(113, 133, 139);
+    font-family: "Hammersmith One", sans-serif;
   }
 }

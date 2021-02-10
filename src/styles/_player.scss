@@ -3,6 +3,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0.5rem;
   justify-content: space-between;
 }
 .time-control {
@@ -25,4 +26,7 @@
 }
 .svg {
   cursor: pointer;
+}
+p {
+  font-family: "Hammersmith One", sans-serif;
 }

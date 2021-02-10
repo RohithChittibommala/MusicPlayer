@@ -6,13 +6,17 @@ import "./styles/app.scss";
 import getSongsList from "./utils/SongList";
 
 function App() {
-  const [songs, setSongs] = useState(getSongsList());
+  const [songs] = useState(getSongsList());
   const [currentSong, setCurrentSong] = useState(songs[0]);
   return (
     <div className="App">
       <Song {...currentSong} />
       <Player {...currentSong} />
-      <Library songs={songs} />
+      <Library
+        songs={songs}
+        currentSong={currentSong}
+        setCurrentSong={setCurrentSong}
+      />
     </div>
   );
 }
