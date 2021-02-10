@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FaAngleLeft, FaAngleRight, FaPlay } from "react-icons/fa";
 import { Song } from "../utils/SongList";
 import { FiPause } from "react-icons/fi";
@@ -18,6 +18,13 @@ const Player: React.FC<Props> = ({ audio }) => {
     duration: 0,
   });
 
+  useEffect(() => {
+    const playSongPromise = audioRef.current?.play();
+    if (playSongPromise !== undefined) {
+      playSongPromise.then((audio) => audioRef.current?.play());
+    }
+  }, [audio]);
+
   const playSongHandler = () => {
     if (isPlaying) {
       audioRef.current?.pause();
@@ -27,6 +34,7 @@ const Player: React.FC<Props> = ({ audio }) => {
       setIsPlaying(true);
     }
   };
+
   function timeUpdateHandler(e: any) {
     const currentTime: number = e.target.currentTime;
     const duration: number = e.target.duration;
@@ -35,7 +43,9 @@ const Player: React.FC<Props> = ({ audio }) => {
 
   function timeFormatter(time: number): String {
     return (
-      Math.floor(time / 60) + ":" + ("0" + Math.floor(time % 60)).slice(-2)
+      Math.floor((time || 0) / 60) +
+      ":" +
+      ("0" + Math.floor(time % 60)).slice(-2)
     );
   }
 
@@ -56,7 +66,7 @@ const Player: React.FC<Props> = ({ audio }) => {
           max={songInfo.duration}
           onChange={handleSongDrag}
         />
-        <p>{timeFormatter(songInfo.duration)}</p>
+        <p>{timeFormatter(songInfo.duration || 0)}</p>
       </div>
       <div className="play-control">
         <FaAngleLeft size={24} className="svg" />

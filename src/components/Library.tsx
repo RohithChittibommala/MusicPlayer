@@ -15,6 +15,7 @@ const Library: React.FC<Props> = ({ songs, setCurrentSong, currentSong }) => {
           <LibrarySong
             setCurrentSong={setCurrentSong}
             song={song}
+            key={song.id.toString()}
             currentSong={currentSong}
           />
         ))}
