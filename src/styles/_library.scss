@@ -1,29 +1,26 @@
 .library {
   position: fixed;
-  top: 0;
-  left: 0;
   width: 20rem;
+  overflow-y: scroll;
+  top: 0;
+  bottom: 0;
   //   margin: 1rem 0;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
   padding: 4rem 0.5rem;
-  padding-top: 15rem;
   height: 100%;
   box-shadow: 2px 2px 50px rgb(235, 213, 213);
   overflow-y: scroll;
   h2 {
     padding: 2rem;
   }
-  button {
+  .add-song-btn {
     color: #fff;
     outline: none;
-    width: 60%;
+    width: 80%;
     font-size: 18px;
-    margin: 25px auto;
+    margin: 25px;
     background: royalblue;
     border: 0px;
-    border-radius: 18px;
+    border-radius: 8px;
     padding: 8px 12px;
     cursor: pointer;
     font-family: Georgia, "Times New Roman", Times, serif;
