@@ -5,8 +5,14 @@ interface Props {
   songs: Array<Song>;
   setCurrentSong: React.Dispatch<React.SetStateAction<Song>>;
   currentSong: Song;
+  setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
-const Library: React.FC<Props> = ({ songs, setCurrentSong, currentSong }) => {
+const Library: React.FC<Props> = ({
+  songs,
+  setCurrentSong,
+  currentSong,
+  setModalOpen,
+}) => {
   return (
     <div className="library">
       <h2>Library</h2>
@@ -20,6 +26,9 @@ const Library: React.FC<Props> = ({ songs, setCurrentSong, currentSong }) => {
           />
         ))}
       </div>
+      <button onClick={() => setModalOpen(true)} className="add-song-btn">
+        Add your song
+      </button>
     </div>
   );
 };

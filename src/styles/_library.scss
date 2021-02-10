@@ -4,15 +4,29 @@
   left: 0;
   width: 20rem;
   //   margin: 1rem 0;
-  padding: 0 0.5rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 4rem 0.5rem;
+  padding-top: 15rem;
   height: 100%;
   box-shadow: 2px 2px 50px rgb(235, 213, 213);
-  //   display: flex;
-  //   flex-direction: column;
-  //   justify-content: center;
   overflow-y: scroll;
   h2 {
     padding: 2rem;
+  }
+  button {
+    color: #fff;
+    outline: none;
+    width: 60%;
+    font-size: 18px;
+    margin: 25px auto;
+    background: royalblue;
+    border: 0px;
+    border-radius: 18px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-family: Georgia, "Times New Roman", Times, serif;
   }
 }
 
@@ -61,4 +75,11 @@
       color: rgb(79, 161, 107);
     }
   }
+}
+
+.add-song-btn {
+  color: #fff;
+  outline: none;
+  width: 40%;
+  margin: 0 25px;
 }

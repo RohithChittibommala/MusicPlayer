@@ -11,17 +11,17 @@ type songInfoType = {
 
 const Player: React.FC<Props> = ({ audio }) => {
   const audioRef = useRef<HTMLAudioElement>(null);
-
   const [isPlaying, setIsPlaying] = useState(false);
   const [songInfo, setSongInfo] = useState<songInfoType>({
     currentTime: 0,
     duration: 0,
   });
-
   useEffect(() => {
-    const playSongPromise = audioRef.current?.play();
-    if (playSongPromise !== undefined) {
-      playSongPromise.then((audio) => audioRef.current?.play());
+    if (isPlaying) {
+      const playSongPromise = audioRef.current?.play();
+      if (playSongPromise !== undefined) {
+        playSongPromise.then((audio) => audioRef.current?.play());
+      }
     }
   }, [audio]);
 
@@ -63,7 +63,7 @@ const Player: React.FC<Props> = ({ audio }) => {
           type="range"
           value={songInfo.currentTime}
           min={0}
-          max={songInfo.duration}
+          max={songInfo.duration || 0}
           onChange={handleSongDrag}
         />
         <p>{timeFormatter(songInfo.duration || 0)}</p>
