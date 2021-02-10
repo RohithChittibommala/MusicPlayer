@@ -1,0 +1,52 @@
+.library {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20rem;
+  //   margin: 1rem 0;
+  padding: 0 0.5rem;
+  height: 100%;
+  box-shadow: 2px 2px 50px gray;
+  //   display: flex;
+  //   flex-direction: column;
+  //   justify-content: center;
+  overflow: scroll;
+  h2 {
+    padding: 2rem;
+  }
+}
+
+.library-song {
+  display: flex;
+  align-items: center;
+  padding: 1rem 2rem 1rem 2rem;
+  transition: 200ms ease-in-out all;
+  cursor: pointer;
+  border-radius: 12px;
+  img {
+    width: 30%;
+  }
+  &:hover {
+    background: lightgray;
+  }
+  &:hover .song-description {
+    h4,
+    h3 {
+      color: #fff;
+    }
+  }
+}
+
+.song-description {
+  padding-left: 1rem;
+  h4 {
+    padding: 0.25rem;
+    font-size: 0.75rem;
+    font-family: "Hammersmith One", sans-serif;
+    font-weight: normal;
+  }
+  h3 {
+    font-size: 1rem;
+    font-family: "Yusei Magic", sans-serif;
+  }
+}
