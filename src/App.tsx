@@ -22,6 +22,17 @@ function App() {
     }
   }, []);
 
+  const handlePrevBtnClk = () => {
+    const index = songs.indexOf(currentSong);
+    if (index === 0) setCurrentSong(songs[songs.length - 1]);
+    else setCurrentSong(songs[index - 1]);
+  };
+  const handleFwdBtnClk = () => {
+    const index = songs.indexOf(currentSong);
+    if (index === songs.length - 1) setCurrentSong(songs[0]);
+    else setCurrentSong(songs[index + 1]);
+  };
+
   const handleSongUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     setIsModalIsOpen(false);
     const { files } = e.target;
@@ -35,7 +46,11 @@ function App() {
     <div className="App">
       <Navbar setIsLibOpen={setIsLibOpen} />
       <Song {...currentSong} />
-      <Player {...currentSong} />
+      <Player
+        {...currentSong}
+        handlePrevBtnClk={handlePrevBtnClk}
+        handleFwdBtnClk={handleFwdBtnClk}
+      />
       <Library
         songs={songs}
         currentSong={currentSong}

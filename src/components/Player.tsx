@@ -2,14 +2,21 @@ import React, { useEffect, useRef, useState } from "react";
 import { FaAngleLeft, FaAngleRight, FaPlay } from "react-icons/fa";
 import { Song } from "../utils/SongList";
 import { FiPause } from "react-icons/fi";
-interface Props extends Song {}
+interface Props extends Song {
+  handleFwdBtnClk(): void;
+  handlePrevBtnClk(): void;
+}
 
 type songInfoType = {
   currentTime: number;
   duration: number;
 };
 
-const Player: React.FC<Props> = ({ audio }) => {
+const Player: React.FC<Props> = ({
+  audio,
+  handleFwdBtnClk,
+  handlePrevBtnClk,
+}) => {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [songInfo, setSongInfo] = useState<songInfoType>({
@@ -75,9 +82,9 @@ const Player: React.FC<Props> = ({ audio }) => {
         <p>{timeFormatter(songInfo.duration || 0)}</p>
       </div>
       <div className="play-control">
-        <FaAngleLeft size={24} className="svg" />
+        <FaAngleLeft onClick={handlePrevBtnClk} size={24} className="svg" />
         {isPlaying ? <FiPause {...iconProps} /> : <FaPlay {...iconProps} />}
-        <FaAngleRight size={24} className="svg" />
+        <FaAngleRight onClick={handleFwdBtnClk} size={24} className="svg" />
       </div>
       <audio
         onTimeUpdate={timeUpdateHandler}
