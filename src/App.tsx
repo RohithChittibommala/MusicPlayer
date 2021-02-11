@@ -8,12 +8,12 @@ import getSongsList from "./utils/SongList";
 import Modal from "react-modal";
 import { addNewSong } from "./utils/util";
 import Navbar from "./components/Navbar";
-
 Modal.setAppElement("#root");
 function App() {
   const [songs, setSongs] = useState(getSongsList());
   const [currentSong, setCurrentSong] = useState(songs[0]);
   const [isModalOpen, setIsModalIsOpen] = useState(false);
+  const [isLibOpen, setIsLibOpen] = useState(false);
 
   useEffect(() => {
     const localSongs = localStorage.getItem("songs");
@@ -27,16 +27,13 @@ function App() {
     const { files } = e.target;
     if (files) {
       const song = await addNewSong(files[0]);
-      const localSongs = localStorage.setItem(
-        "songs",
-        JSON.stringify([...songs, song])
-      );
+      localStorage.setItem("songs", JSON.stringify([...songs, song]));
       setSongs([...songs, song]);
     }
   };
   return (
     <div className="App">
-      <Navbar />
+      <Navbar setIsLibOpen={setIsLibOpen} />
       <Song {...currentSong} />
       <Player {...currentSong} />
       <Library
@@ -44,6 +41,7 @@ function App() {
         currentSong={currentSong}
         setModalOpen={setIsModalIsOpen}
         setCurrentSong={setCurrentSong}
+        isLibraryOpen={isLibOpen}
       />
       <Modal
         isOpen={isModalOpen}

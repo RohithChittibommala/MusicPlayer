@@ -1,3 +1,4 @@
+$ButtonFont: "Hammersmith One", sans-serif;
 * {
   margin: 0;
   padding: 0%;
@@ -19,6 +20,7 @@
 @import "./song";
 @import "./player";
 @import "./library";
+@import "./navbar";
 // @import "./ripple";
 
 // font-family: 'Hammersmith One', sans-serif;

@@ -6,15 +6,17 @@ interface Props {
   setCurrentSong: React.Dispatch<React.SetStateAction<Song>>;
   currentSong: Song;
   setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  isLibraryOpen: boolean;
 }
 const Library: React.FC<Props> = ({
   songs,
   setCurrentSong,
   currentSong,
   setModalOpen,
+  isLibraryOpen,
 }) => {
   return (
-    <div className="library">
+    <div className={`library ${isLibraryOpen ? `visible` : ``}`}>
       <h2>Library</h2>
       <div className="library-songs">
         {songs.map((song) => (
