@@ -6,7 +6,6 @@ export type Song = {
   artist: String;
   color: Array<String>;
   id: String;
-  isActive: Boolean;
 };
 function SongList(): Song[] {
   return [
@@ -18,7 +17,6 @@ function SongList(): Song[] {
       audio: "https://mp3.chillhop.com/serve.php/?mp3=10075",
       color: ["#205950", "#2ab3bf"],
       id: uuidv4(),
-      isActive: true,
     },
     {
       name: "Daylight",
@@ -28,7 +26,6 @@ function SongList(): Song[] {
       audio: "https://mp3.chillhop.com/serve.php/?mp3=9272",
       color: ["#EF8EA9", "#ab417f"],
       id: uuidv4(),
-      isActive: false,
     },
     {
       name: "Keep Going",
@@ -38,7 +35,6 @@ function SongList(): Song[] {
       audio: "https://mp3.chillhop.com/serve.php/?mp3=9222",
       color: ["#CD607D", "#c94043"],
       id: uuidv4(),
-      isActive: false,
     },
     {
       name: "Nightfall",
@@ -48,7 +44,6 @@ function SongList(): Song[] {
       audio: "https://mp3.chillhop.com/serve.php/?mp3=9148",
       color: ["#EF8EA9", "#ab417f"],
       id: uuidv4(),
-      isActive: false,
     },
     {
       name: "Reflection",
@@ -58,7 +53,6 @@ function SongList(): Song[] {
       audio: "https://mp3.chillhop.com/serve.php/?mp3=9228",
       color: ["#CD607D", "#c94043"],
       id: uuidv4(),
-      isActive: false,
     },
     {
       name: "Under the City Stars",
@@ -68,7 +62,16 @@ function SongList(): Song[] {
       audio: "https://mp3.chillhop.com/serve.php/?mp3=10074",
       color: ["#205950", "#2ab3bf"],
       id: uuidv4(),
-      isActive: false,
+    },
+    {
+      name: "Dilbar Song",
+      cover:
+        "https://chillhop.com/wp-content/uploads/2020/10/0e5bb63f838ff92eeac142aae944e9f678df13c9-1024x1024.jpg",
+      artist: "Unknown",
+      audio:
+        "http://res.cloudinary.com/rohith/video/upload/v1613031198/vmastm6y6rdulssmdlx8.mp3",
+      color: ["#205950", "#2ab3bf"],
+      id: uuidv4(),
     },
 
     //ADD MORE HERE

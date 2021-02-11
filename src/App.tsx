@@ -3,9 +3,11 @@ import Library from "./components/Library";
 import Player from "./components/Player";
 import Song from "./components/Song";
 import "./styles/app.scss";
+
 import getSongsList from "./utils/SongList";
 import Modal from "react-modal";
-import { v4 as uuidv4 } from "uuid";
+import { addNewSong } from "./utils/util";
+
 Modal.setAppElement("#root");
 function App() {
   const [songs, setSongs] = useState(getSongsList());
@@ -19,23 +21,16 @@ function App() {
     }
   }, []);
 
-  const handleSongUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSongUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    setIsModalIsOpen(false);
     const { files } = e.target;
     if (files) {
-      const songUrl = URL.createObjectURL(files[0]);
-      console.log(songUrl);
-      const newSong = {
-        name: files[0]?.name,
-        artist: "unknown",
-        cover:
-          "https://chillhop.com/wp-content/uploads/2020/12/33a2a875828118a3ff260638a88362936104879a-1024x1024.jpg",
-        audio: songUrl,
-        color: ["#CD607D", "#c94043"],
-        id: uuidv4(),
-        isActive: true,
-      };
-      localStorage.setItem("songs", JSON.stringify([...songs, newSong]));
-      setSongs([...songs, newSong]);
+      const song = await addNewSong(files[0]);
+      const localSongs = localStorage.setItem(
+        "songs",
+        JSON.stringify([...songs, song])
+      );
+      setSongs([...songs, song]);
     }
   };
   return (

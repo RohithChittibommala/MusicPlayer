@@ -45,8 +45,10 @@
       "last 1 safari version"
     ]
   },
+ 
   "devDependencies": {
     "@types/react-modal": "^3.12.0",
     "@types/uuid": "^8.3.0"
-  }
+  },
+   "proxy": "https://api.cloudinary.com/v1_1/rohith/upload"
 }

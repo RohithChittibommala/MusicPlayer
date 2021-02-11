@@ -1,14 +1,7 @@
 import React from "react";
+import { Song as ISong } from "../utils/SongList";
 
-type Props = {
-  name: String;
-  cover: String | string;
-  audio: String;
-  artist: String;
-  color: Array<String>;
-  id: String;
-  isActive: Boolean;
-};
+interface Props extends ISong {}
 
 const Song: React.FC<Props> = ({ artist, name, cover }) => {
   return (
