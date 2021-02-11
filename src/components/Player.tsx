@@ -54,6 +54,12 @@ const Player: React.FC<Props> = ({ audio }) => {
       audioRef.current.currentTime = e.currentTarget.valueAsNumber;
     setSongInfo({ ...songInfo, currentTime: e.currentTarget.valueAsNumber });
   }
+  const iconProps = {
+    size: 30,
+    onClick: playSongHandler,
+    className: "svg",
+    onKeyDown: (e: React.KeyboardEvent<SVGElement>) => console.log(e.code),
+  };
 
   return (
     <div className="player">
@@ -70,11 +76,7 @@ const Player: React.FC<Props> = ({ audio }) => {
       </div>
       <div className="play-control">
         <FaAngleLeft size={24} className="svg" />
-        {isPlaying ? (
-          <FiPause size={30} onClick={playSongHandler} className="svg" />
-        ) : (
-          <FaPlay size={30} onClick={playSongHandler} className="svg" />
-        )}
+        {isPlaying ? <FiPause {...iconProps} /> : <FaPlay {...iconProps} />}
         <FaAngleRight size={24} className="svg" />
       </div>
       <audio

@@ -7,6 +7,7 @@ import "./styles/app.scss";
 import getSongsList from "./utils/SongList";
 import Modal from "react-modal";
 import { addNewSong } from "./utils/util";
+import Navbar from "./components/Navbar";
 
 Modal.setAppElement("#root");
 function App() {
@@ -35,6 +36,7 @@ function App() {
   };
   return (
     <div className="App">
+      <Navbar />
       <Song {...currentSong} />
       <Player {...currentSong} />
       <Library
