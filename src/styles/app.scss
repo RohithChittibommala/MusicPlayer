@@ -1,19 +1,11 @@
 $ButtonFont: "Hammersmith One", sans-serif;
+$HeadingFont: "Poppins", sans-serif;
 * {
   margin: 0;
   padding: 0%;
   box-sizing: border-box;
 }
-.modal {
-  height: 400px;
-  width: 400px;
-  margin: 150px auto;
-  position: relative;
-  padding: 15px 20px;
-  border-radius: 30px;
-  outline: none;
-  background: #fff;
-}
+
 @import url("https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Yusei+Magic&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
@@ -31,6 +23,7 @@ $ButtonFont: "Hammersmith One", sans-serif;
   scrollbar-width: thin;
   scrollbar-color: rgba(155, 155, 155, 0.5) transparent;
 }
+
 *::-webkit-scrollbar {
   width: 5px;
 }
@@ -41,4 +34,35 @@ $ButtonFont: "Hammersmith One", sans-serif;
   background-color: rgba(12, 116, 129, 0.664);
   border-radius: 20px;
   border: transparent;
+}
+
+.app {
+  transition: all ease 0.5s;
+}
+.active-library {
+  margin-left: 20%;
+}
+.modal {
+  height: 100px;
+  width: 400px;
+  margin: 150px auto;
+  position: relative;
+  padding: 15px 20px;
+  border-radius: 20px;
+  font-family: $HeadingFont;
+
+  outline: none;
+  background: #fff;
+}
+
+@media screen and (max-width: 768px) {
+  .modal {
+    width: 90%;
+    border-radius: 10px;
+
+    h2 {
+      padding: 5px;
+      font-size: 16px;
+    }
+  }
 }

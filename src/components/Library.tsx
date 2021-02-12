@@ -7,6 +7,7 @@ interface Props {
   currentSong: Song;
   setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
   isLibraryOpen: boolean;
+  songUploadStatus: boolean;
 }
 const Library: React.FC<Props> = ({
   songs,
@@ -14,6 +15,7 @@ const Library: React.FC<Props> = ({
   currentSong,
   setModalOpen,
   isLibraryOpen,
+  songUploadStatus,
 }) => {
   return (
     <div className={`library ${isLibraryOpen ? `visible` : ``}`}>
@@ -28,9 +30,13 @@ const Library: React.FC<Props> = ({
           />
         ))}
       </div>
-      <button onClick={() => setModalOpen(true)} className="add-song-btn">
-        Add your song
-      </button>
+      {!songUploadStatus ? (
+        <button onClick={() => setModalOpen(true)} className="add-song-btn">
+          Add your song
+        </button>
+      ) : (
+        <h2 className="loading">song is bieng uploaded</h2>
+      )}
     </div>
   );
 };

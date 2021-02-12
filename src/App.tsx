@@ -16,6 +16,7 @@ function App() {
   const [currentSong, setCurrentSong] = useState(songs[0]);
   const [isModalOpen, setIsModalIsOpen] = useState(false);
   const [isLibOpen, setIsLibOpen] = useState(false);
+  const [songUploadStatus, setSongUploadStaus] = useState(false);
 
   useEffect(() => {
     const localSongs = localStorage.getItem("songs");
@@ -39,45 +40,53 @@ function App() {
   const handleSongUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     setIsModalIsOpen(false);
     const { files } = e.target;
+    setSongUploadStaus(true);
     if (files) {
       const song = await addNewSong(files[0]);
+      setSongUploadStaus(false);
       localStorage.setItem("songs", JSON.stringify([...songs, song]));
       setSongs([...songs, song]);
     }
   };
+
   return (
-    <div className="App">
-      <Navbar setIsLibOpen={setIsLibOpen} />
-      <Song {...currentSong} />
-      <Player
-        {...currentSong}
-        handlePrevBtnClk={handlePrevBtnClk}
-        handleFwdBtnClk={handleFwdBtnClk}
-      />
+    <div>
       <Library
         songs={songs}
         currentSong={currentSong}
         setModalOpen={setIsModalIsOpen}
         setCurrentSong={setCurrentSong}
         isLibraryOpen={isLibOpen}
+        songUploadStatus={songUploadStatus}
       />
-      <Modal
-        isOpen={isModalOpen}
-        style={{
-          overlay: {
-            backgroundColor: "rgba(63, 59, 59, 0.75)",
-          },
-        }}
-        onRequestClose={() => setIsModalIsOpen(false)}
-        className="modal"
-      >
-        <input
-          type="file"
-          onChange={handleSongUpload}
-          className="audio-input"
-          accept=".mp3"
+      <div className={`app ${isLibOpen ? `active-library` : ``}`}>
+        <Navbar setIsLibOpen={setIsLibOpen} />
+        <Song {...currentSong} />
+        <Player
+          {...currentSong}
+          handlePrevBtnClk={handlePrevBtnClk}
+          handleFwdBtnClk={handleFwdBtnClk}
         />
-      </Modal>
+
+        <Modal
+          isOpen={isModalOpen}
+          style={{
+            overlay: {
+              backgroundColor: "rgba(63, 59, 59, 0.75)",
+            },
+          }}
+          onRequestClose={() => setIsModalIsOpen(false)}
+          className="modal"
+        >
+          <h2>Upload your favorite song</h2>
+          <input
+            type="file"
+            onChange={handleSongUpload}
+            className="audio-input"
+            accept=".mp3"
+          />
+        </Modal>
+      </div>
     </div>
   );
 }

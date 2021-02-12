@@ -7,6 +7,7 @@
   padding: 1rem 0.5rem;
   height: 100%;
   box-shadow: 2px 2px 50px rgb(235, 213, 213);
+  background: #fff;
   overflow-y: scroll;
   transform: translateX(-100%);
   opacity: 0;
@@ -24,6 +25,16 @@
     cursor: pointer;
     font-family: Georgia, "Times New Roman", Times, serif;
   }
+  h2 {
+    text-align: left;
+    font-family: $HeadingFont;
+    // font-weight: bold;
+    font-size: 1.6rem;
+  }
+}
+.loading {
+  text-align: center;
+  font-size: 16px;
 }
 
 .library-song {
@@ -83,4 +94,10 @@
 .visible {
   transform: translateX(0%);
   opacity: 1;
+}
+
+@media screen and (max-width: 768px) {
+  .library {
+    width: 100%;
+  }
 }

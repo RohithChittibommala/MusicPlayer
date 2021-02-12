@@ -25,10 +25,10 @@ const Player: React.FC<Props> = ({
   });
   useEffect(() => {
     if (isPlaying) {
-      const playSongPromise = audioRef.current?.play();
-      if (playSongPromise !== undefined) {
-        playSongPromise.then((audio) => audioRef.current?.play());
-      }
+      audioRef.current
+        ?.play()
+        .then((audio) => audioRef.current?.play())
+        .catch((er) => console.error(er));
     }
   }, [audio]);
 
@@ -46,6 +46,7 @@ const Player: React.FC<Props> = ({
     const currentTime: number = e.target.currentTime;
     const duration: number = e.target.duration;
     setSongInfo({ ...songInfo, currentTime, duration });
+    if (currentTime === duration) handleFwdBtnClk();
   }
 
   function timeFormatter(time: number): String {
