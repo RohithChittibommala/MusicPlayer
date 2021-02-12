@@ -8,7 +8,9 @@ import getSongsList from "./utils/SongList";
 import Modal from "react-modal";
 import { addNewSong } from "./utils/util";
 import Navbar from "./components/Navbar";
+
 Modal.setAppElement("#root");
+
 function App() {
   const [songs, setSongs] = useState(getSongsList());
   const [currentSong, setCurrentSong] = useState(songs[0]);
@@ -27,6 +29,7 @@ function App() {
     if (index === 0) setCurrentSong(songs[songs.length - 1]);
     else setCurrentSong(songs[index - 1]);
   };
+
   const handleFwdBtnClk = () => {
     const index = songs.indexOf(currentSong);
     if (index === songs.length - 1) setCurrentSong(songs[0]);

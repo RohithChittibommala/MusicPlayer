@@ -63,16 +63,6 @@ function SongList(): Song[] {
       color: ["#205950", "#2ab3bf"],
       id: uuidv4(),
     },
-    {
-      name: "Dilbar Song",
-      cover:
-        "https://chillhop.com/wp-content/uploads/2020/10/0e5bb63f838ff92eeac142aae944e9f678df13c9-1024x1024.jpg",
-      artist: "Unknown",
-      audio:
-        "http://res.cloudinary.com/rohith/video/upload/v1613031198/vmastm6y6rdulssmdlx8.mp3",
-      color: ["#205950", "#2ab3bf"],
-      id: uuidv4(),
-    },
 
     //ADD MORE HERE
   ];
