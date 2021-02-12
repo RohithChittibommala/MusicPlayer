@@ -4,12 +4,10 @@ import { Song } from "./SongList";
 
 export const addNewSong = async (file: File) => {
   const data = new FormData();
-  console.log(file);
   data.append("file", file);
   data.append("upload_preset", `${process.env.REACT_APP_UPLOAD_PRESET}`);
   data.append("resource_type", "audio");
   data.append("cloud_name", `${process.env.REACT_APP_CLOUD_NAME}`);
-  console.log(data);
   const res = await axios.post(`${process.env.REACT_APP_CLOUDINARY_URL}`, data);
   return createNewSong(res.data);
 };
